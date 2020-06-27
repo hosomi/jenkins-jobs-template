@@ -8,7 +8,7 @@
 
 ### 1.1 Docker Deskop install
 
-``*環境がある方はこの作業は不要です。``
+``*Docker Desktop の環境がある方はこの作業は不要です。``
 
 [Docker Desktop for Mac and Windows | Docker](https://www.docker.com/products/docker-desktop) に移動して対象の環境を選択してください。  
 Windows の場合、Download for Windows(stable)を選択。  
@@ -22,7 +22,7 @@ Docker のイメージとして Official Jenkins master image for Docker を利�
 :link: [jenkins/jenkins - Docker Hub](https://hub.docker.com/r/jenkins/jenkins)
 
 コマンドプロンプト、ターミナルで次を実行。  
-（プロンプトは全て `` > `` で表示されます。）
+（プロンプトは全て `` > `` で表記しています。）
 
 ``docker pull jenkins/jenkins:lts``（LTS 版を指定します。） :  
 

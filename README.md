@@ -9,7 +9,7 @@ Jenkins Job パイプライン(Jenkinsfile)のテンプレート。
 
 ---
 
-:book:  
+:book: 参考：  
 
 * [Jenkins](https://www.jenkins.io/)  
 * [Jenkins User Documentation](https://www.jenkins.io/doc/)  
@@ -19,7 +19,7 @@ Jenkins Job パイプライン(Jenkinsfile)のテンプレート。
 
 ## 1.1 Jenkins master
 
-[Jenkins and Docker](setup-master) 公式の Docker image で Jenkins master を構築します。
+[こちら](setup-master) の手順で Jenkins master を Dcoker で構築します。
 
 ## 1.2 Jenkinsfile エディター
 
