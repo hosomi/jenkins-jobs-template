@@ -4,9 +4,7 @@
 
 :link: [Jenkins and Docker](https://www.jenkins.io/solutions/docker/)  
 
-## 1. Docker
-
-### 1.1 Docker Deskop install
+## 1. Docker Desktop install
 
 ``*Docker Desktop の環境がある方はこの作業は不要です。``
 
@@ -14,12 +12,15 @@
 Windows の場合、Download for Windows(stable)を選択。  
 ダウンロード後、ダンロードしたファイルを実行してください、インストール後再起動が必要です。
 
-### 1.2 Docker image download
+## 2. Official Jenkins master image setup
 
 Docker のイメージとして Official Jenkins master image for Docker を利用します。  
 
 参考情報：  
 :link: [jenkins/jenkins - Docker Hub](https://hub.docker.com/r/jenkins/jenkins)
+
+
+### 2.1 Docker image download
 
 コマンドプロンプト、ターミナルで次を実行。  
 （プロンプトは全て `` > `` で表記しています。）
@@ -53,7 +54,7 @@ Status: Downloaded newer image for jenkins/jenkins:lts
 docker.io/jenkins/jenkins:lts
 ```
 
-### 1.3 Docker image 確認
+### 2.2 Docker image を確認する
 
 ``docker images`` :
 
@@ -63,9 +64,9 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 jenkins/jenkins     lts                 60f81923d099        9 days ago          658MB
 ```
 
+### 2.3 Jenkins image を起動する
 
-
-## 1.4 Jenkins image 起動(初回のみ)
+``*初回のみ``
 
 ``docker run -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts`` :
 
@@ -135,18 +136,18 @@ Please use the following password to proceed to installation:
 ![Please use the following password to proceed to installation](jenkins-docker-run-01.png)  
 
 
-## 2 Jenkins Getting Started
+## 3 Jenkins Getting Started
 
 ブラウザから ``http://localhost:8080`` にアクセス。  
 
-### 2.1 Unlock Jenkins
+### 3.1 Unlock Jenkins
  
 Unlock Jenkins が表示されますので、前項の出力内容を Administrator password に入力して右下の Continue ボタンをクリック。
 
 補足：  
 ![Unlock Jenkins](jenkins-docker-run-02.png)  
 　  
-### 2.2 Customize Jenkins
+### 3.2 Customize Jenkins
 
 インストールするプラグインを提案と自分で選択する 2 択で聞いてきますが、
 左の Install suggested plugins を選択してください。  
@@ -161,7 +162,7 @@ Unlock Jenkins が表示されますので、前項の出力内容を Administra
 
 
 
-### 2.3 Create First Admin User
+### 3.3 Create First Admin User
 
 管理者ユーザの登録を行います。  
 全て必須入力です。  
@@ -171,7 +172,7 @@ Unlock Jenkins が表示されますので、前項の出力内容を Administra
 ![Create First Admin User](jenkins-docker-run-04.png)  
 
 
-### 2.4 Instance Configuration
+### 3.4 Instance Configuration
 
 Jenkins の URL を設定します、この URL はビルド通知、パスワードを忘れた場合の通知等で利用されます。  
 ``*後でも変更可能です。 ``  
@@ -180,7 +181,7 @@ Save and Finish をクリックしてください。
 ![Instance Configuration](jenkins-docker-run-05.png)  
 
 
-### 2.5 Jenkins is ready!
+### 3.5 Jenkins is ready!
 
 以上で終了です。  
 
@@ -189,9 +190,9 @@ Save and Finish をクリックしてください。
 
 
 
-## 3. docker image (Jenkins) 停止方法
+## 4. docker image (Jenkins) 停止方法
 
-### 3.1 停止対象を調べる
+### 4.1 停止対象を調べる
 
 ``docker ps -a`` :   
 
@@ -205,7 +206,7 @@ CONTAINER ID        IMAGE                 COMMAND                  CREATED      
 出力されている CONTAINER ID をメモします。  
 この例ですと CONTAINER ID は 13920882163e です。  
 
-### 3.2 停止する
+### 4.2 停止する
 
 
 ``docker stop [CONTAINER ID]`` :  
@@ -215,7 +216,7 @@ CONTAINER ID        IMAGE                 COMMAND                  CREATED      
 13920882163e
 ```
 
-### 3.3 停止しているか確認
+### 4.3 停止しているか確認する
 
 ``docker ps -a`` :   
 
@@ -228,11 +229,11 @@ CONTAINER ID        IMAGE                 COMMAND                  CREATED      
 STATUS に Exited と表示されていれば停止している状態です。
 
 　  
-## 4. docker image (Jenkins) 起動方法
+## 5. docker image (Jenkins) 起動方法
 　  
 setup 済みの Jenkins image を起動する場合。
 
-### 4.1 起動対象を調べる
+### 5.1 起動対象を調べる
 
 ``docker ps -a`` :   
 
@@ -247,7 +248,7 @@ CONTAINER ID        IMAGE                 COMMAND                  CREATED      
 
 
 　  
-### 3.2 起動する
+### 5.2 起動する
 
 ``docker start [CONTAINER ID]`` :  
 
@@ -256,7 +257,7 @@ CONTAINER ID        IMAGE                 COMMAND                  CREATED      
 13920882163e
 ```
 　  
-### 3.3 起動しているか確認
+### 5.3 起動しているか確認する
 　  
 ``docker ps -a`` :   
 
@@ -269,6 +270,67 @@ CONTAINER ID        IMAGE                 COMMAND                  CREATED      
 STATUS に Up が表示されていれば起動している状態です。  
 ブラウザから ``http://localhost:8080`` にアクセスしてください。  
 
+
+## 6. Docker image を消したい場合
+
+間違って ``docker run`` してイメージが複数できて消したい場合。
+
+
+### 6.1 削除対象を調べる
+
+``docker ps -a`` :   
+
+```
+> docker ps -a
+CONTAINER ID        IMAGE                 COMMAND                  CREATED              STATUS                      PORTS                                              NAMES
+3dfa722930e6        jenkins/jenkins:lts   "/sbin/tini -- /usr/…"   About a minute ago   Up About a minute           0.0.0.0:8080->8080/tcp, 0.0.0.0:50000->50000/tcp   festive_chaplygin
+13920882163e        jenkins/jenkins:lts   "/sbin/tini -- /usr/…"   17 hours ago         Exited (143) 16 hours ago                                                      magical_albattani
+```
+
+出力されている CONTAINER ID をメモします。  
+この例ですと CONTAINER ID は 3dfa722930e6 です。   
+起動しているので先に停止します。  
+
+### 6.2 削除対象を停止する
+
+停止済みの場合は飛ばして次へ。
+
+``docker stop [CONTAINER ID]`` :  
+
+```
+> docker stop 3dfa722930e6
+3dfa722930e6
+```
+
+### 6.3 削除する
+
+``docker rm [CONTAINER ID]`` :  
+
+```
+> docker rm  3dfa722930e6
+3dfa722930e6
+```
+
+### 6.4 削除されているか確認する
+
+``docker ps -a`` :   
+
+```
+> docker ps -a
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS                      PORTS               NAMES
+13920882163e        jenkins/jenkins:lts   "/sbin/tini -- /usr/…"   17 hours ago        Exited (143) 16 hours ago                       magical_albattani
+```
+
+削除した CONTAINER ID が出力されていなければ削除済みです。
+
+　  
+　  
+　  
+　  
+　  
+　  
+　  
+　  
 
 * * *
 
