@@ -65,7 +65,7 @@ jenkins/jenkins     lts                 60f81923d099        9 days ago          
 
 
 
-## 1.4 Jenkins image 起動
+## 1.4 Jenkins image 起動(初回のみ)
 
 ``docker run -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts`` :
 
@@ -225,16 +225,50 @@ CONTAINER ID        IMAGE                 COMMAND                  CREATED      
 13920882163e        jenkins/jenkins:lts   "/sbin/tini -- /usr/…"   54 minutes ago      Exited (143) About a minute ago                       magical_albattani
 ```
 
-STATUS が Exited と表示されていれば停止している状態です。
+STATUS に Exited と表示されていれば停止している状態です。
 
 　  
+## 4. docker image (Jenkins) 起動方法
 　  
+setup 済みの Jenkins image を起動する場合。
+
+### 4.1 起動対象を調べる
+
+``docker ps -a`` :   
+
+```
+> docker ps -a
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS                      PORTS               NAMES
+13920882163e        jenkins/jenkins:lts   "/sbin/tini -- /usr/…"   17 hours ago        Exited (143) 16 hours ago                       magical_albattani
+```
+
+出力されている CONTAINER ID をメモします。  
+この例ですと CONTAINER ID は 13920882163e です。  
+
+
 　  
+### 3.2 起動する
+
+``docker start [CONTAINER ID]`` :  
+
+```
+> docker start 13920882163e
+13920882163e
+```
 　  
+### 3.3 起動しているか確認
 　  
-　  
-　  
-　  
+``docker ps -a`` :   
+
+```
+> docker ps -a
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                              NAMES
+13920882163e        jenkins/jenkins:lts   "/sbin/tini -- /usr/…"   17 hours ago        Up 6 minutes        0.0.0.0:8080->8080/tcp, 0.0.0.0:50000->50000/tcp   magical_albattani
+```
+
+STATUS に Up が表示されていれば起動している状態です。  
+ブラウザから ``http://localhost:8080`` にアクセスしてください。  
+
 
 * * *
 
