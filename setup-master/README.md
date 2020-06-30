@@ -16,14 +16,24 @@ Windows の場合、Download for Windows(stable)を選択。
 
 Docker のイメージとして Official Jenkins master image for Docker を利用します。  
 
-参考情報：  
+:book: 参考情報：  
 :link: [jenkins/jenkins - Docker Hub](https://hub.docker.com/r/jenkins/jenkins)
+
+---
+
+:memo: 補足情報：  
+Visual Studio Code を利用されている方は Microsoft 公式の Docker 拡張を利用してもらっても構いませんが、
+当手順はコンソールを利用します。  
+``他のツール、拡張機能についても同様です。``  
+　  
+:link: [Docker - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)  
+
 
 
 ### 2.1 Docker image download
 
 コマンドプロンプト、ターミナルで次を実行。  
-（プロンプトは全て `` > `` で表記しています。）
+（プロンプトは全て `` > `` で表記しています。）  
 
 ``docker pull jenkins/jenkins:lts``（LTS 版を指定します。） :  
 
@@ -153,7 +163,7 @@ Unlock Jenkins が表示されますので、前項の出力内容を Administra
 左の Install suggested plugins を選択してください。  
 ``*後でも追加、削除が可能です。``
 
-補足：  
+:memo: 補足：  
 ![Customize Jenkins](jenkins-docker-run-03.png)  
 
 
@@ -168,7 +178,7 @@ Unlock Jenkins が表示されますので、前項の出力内容を Administra
 全て必須入力です。  
 入力が終わったら、右下の Save and Continue をクリックしてください。  
 
-補足：  
+:memo: 補足：  
 ![Create First Admin User](jenkins-docker-run-04.png)  
 
 
