@@ -32,7 +32,7 @@ Jenkins Job パイプライン(Jenkinsfile)のテンプレート。
 ## 2. Template
 
 
-基本的なパイプラインジョブ作成手順は[こちら](tree/master/template/master-node-only)を参照してください。
+基本的なパイプラインジョブ作成手順は[こちら](template/master-node-only)を参照してください。
 
 ### 2.1 master node only
 
@@ -40,7 +40,7 @@ master ノードのみで動作するテンプレートです。
 
 | Title | Node | Keyword | Jenkinsfile | Description 
 | ----- | ---- | ---- | :---------: |----------- 
-| hello world | master | [node](https://www.jenkins.io/doc/book/pipeline/#node), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](tree/master/template/master-node-only/hello-world.Jenkinsfile) | master ノードのシェルスクリプトで echo します。 
+| hello world | master | [node](https://www.jenkins.io/doc/book/pipeline/#node), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](template/master-node-only/hello-world.Jenkinsfile) | master ノードのシェルスクリプトで echo します。 
 
 　  
 　  
