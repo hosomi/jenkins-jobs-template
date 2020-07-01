@@ -32,7 +32,7 @@ Jenkins Job パイプライン(Jenkinsfile)のテンプレート。
 ## 2. Template
 
 
-基本的なパイプラインジョブ作成手順は[こちら](blob/master/tree/master/template/master-node-only)を参照してください。
+基本的なパイプラインジョブ作成手順は[こちら](tree/master/template/master-node-only)を参照してください。
 
 ### 2.1 master node only
 
