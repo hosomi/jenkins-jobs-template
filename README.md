@@ -32,8 +32,8 @@ Jenkins Job パイプライン(Jenkinsfile)のテンプレート。
 ## 2. Template
 
 
-基本的なパイプラインジョブ作成手順は[こちら](blob/master/template/master-node-only/README.md)を参照してください。  
-また、定義を Pipeline script from SCM を選択して作成する手順は[こちら](blob/master/template/master-node-only/SCM.md)を参照してください。  
+基本的なパイプラインジョブ作成手順は[こちら](template/master-node-only/README.md)を参照してください。  
+また、定義を Pipeline script from SCM を選択して作成する手順は[こちら](template/master-node-only/SCM.md)を参照してください。  
 何れも次の hello world を表示する手順です。  
 
 ### 2.1 master node only
