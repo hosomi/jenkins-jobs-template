@@ -23,7 +23,7 @@ Jenkins Job パイプライン(Jenkinsfile)のテンプレート。
 
 ### 1.2 Jenkins slave  
 
-[こちら](setup-salve-linux) の手順で Jenkins slave を Dcoker で構築します。    
+[こちら](setup-slave-linux) の手順で Jenkins slave を Dcoker で構築します。    
 
 
 ### 1.3 Jenkinsfile エディター
