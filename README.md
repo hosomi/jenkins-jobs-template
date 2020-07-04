@@ -21,7 +21,12 @@ Jenkins Job パイプライン(Jenkinsfile)のテンプレート。
 
 [こちら](setup-master) の手順で Jenkins master を Dcoker で構築します。
 
-### 1.2 Jenkinsfile エディター
+### 1.2 Jenkins slave  
+
+[こちら](setup-salve-linux) の手順で Jenkins slave を Dcoker で構築します。    
+
+
+### 1.3 Jenkinsfile エディター
 
 テキストエディタなら何でも良いですが、Visual Studio Code を推奨します。  
 　  
