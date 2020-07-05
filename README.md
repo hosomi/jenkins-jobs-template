@@ -36,18 +36,17 @@ Jenkins Job パイプライン(Jenkinsfile)のテンプレート。
 
 ## 2. Template
 
+基本的なパイプラインジョブ作成手順は[こちら](template/single-node-only/README.md)を参照してください。  
+また、定義を Pipeline script from SCM を選択して作成する手順は[こちら](template/single-node-only/SCM.md)を参照してください。  
+何れも master ノードで hello world を表示する手順です。  
 
-基本的なパイプラインジョブ作成手順は[こちら](template/master-node-only/README.md)を参照してください。  
-また、定義を Pipeline script from SCM を選択して作成する手順は[こちら](template/master-node-only/SCM.md)を参照してください。  
-何れも次の hello world を表示する手順です。  
+### 2.1 sigle node
 
-### 2.1 master node only
-
-master ノードのみで動作するテンプレートです。
+sigle ノードのみで動作するテンプレートです。
 
 | Title | Node | Keyword | Jenkinsfile | Script Path | Description 
 | ----- | ---- | ---- | :---------: |----------- |----------- 
-| hello world | master | [node](https://www.jenkins.io/doc/book/pipeline/#node), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](template/master-node-only/hello-world.Jenkinsfile) | template/master-node-only/hello-world.Jenkinsfile | master ノードのシェルスクリプトで echo します。 
+| hello world | master | [node](https://www.jenkins.io/doc/book/pipeline/#node), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](template/single-node-only/master-hello-world.Jenkinsfile) | template/single-node-only/hello-world.Jenkinsfile | master ノードのシェルスクリプトで echo します。 
 
 　  
 　  
