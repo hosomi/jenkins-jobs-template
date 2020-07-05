@@ -100,10 +100,10 @@ IPAddress の項目が Jenkins master の ip address です。
 
 ## 4 CentOS7 のコンテナを起動
 
-``docker run -itd --privileged -p 2222:22 --name centos7 centos:centos7 /sbin/init``:  
+``docker run -itd --privileged -p 2222:22 --name centos7 centos:centos7 /sbin/init --login``:  
 
 ```
-> docker run -itd --privileged -p 2222:22 --name centos7 centos:centos7 /sbin/init
+> docker run -itd --privileged -p 2222:22 --name centos7 centos:centos7 /sbin/init --login
 534e21afeda8b07399c625a28e05a107580035f808faab0951207c1e7f4a3b03
 ```
 
@@ -111,8 +111,10 @@ IPAddress の項目が Jenkins master の ip address です。
 | ----- | ----- 
 | -itd  | コンテナのプロセスに tty を割り当ててバックグランドでコンテナを起動。
 | -p | ポート指定(ssh のみ 2222(ホスト) -> 22(コンテナ))。
-| --privileged | systemctl を使えるようにする。  
+| --privileged | systemctl を使えるようにする、/sbin/init とセット。  
 | –-name | コンテナの名前を指定。  
+| /sbin/init | /sbin/init を PID=1 のメインプロセスにして systemctl を使用できるようにする。  
+| --login | ログインプロセスを通す。  
 
 ## 4.1 コンテナが起動しているか確認する
 
@@ -132,7 +134,7 @@ STATUS の項目で Up が起動済みです、Exited は停止状態です。
 
 コンテナの CentOS7 にパッケージの追加と設定を行う為、SSH ログイン(tty) します。
 
-``docker exec -it centos7 /bin/bash``:  
+``docker exec -it centos7 /bin/bash --login``:  
 
 ```
 > docker exec -it centos7 /bin/bash
@@ -180,11 +182,14 @@ vi のキーボード操作
 ``shift + g``: 最終行に移動。  
 ``o``: 一行追加して編集モード。  
 ``export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64/jre``: 入力または貼り付けてください。  
-``esc``: コマンドモードに移行。  
-``wq ``: 保存して終了（wq 次に enter）。  
+``esc``: 一旦入力を終了。
+``:``: :（コロン）コマンドモードに移行。  
+``wq ``: 保存して終了（wq の次に enter）。  
 
 
 #### 5.2.2 /etc/profile を読み込む
+
+一時的に環境変数を読み込む。  
 
 ``source /etc/profile``:  
 
@@ -258,14 +263,15 @@ Set executable permissions for: /root/.gradle/wrapper/dists/gradle-4.6-bin/4jp4s
 
 省略
 
-<-------------> 0% EXECUTING [1m 30s]
+INFO: Connected
+<-------------> 0% EXECUTING [18s]
 > :start
 > IDLE
 > IDLE
 ```
 
 正常に起動できた場合、IDLE 状態で待機状態になります。  
-ブラウザから Jenkins ログイン（``http://localhost:8080``）にログインして Slave が追加されている確認。  
+ブラウザから Jenkins ログイン（``http://localhost:8080``）して Slave が追加されている確認。  
 
 
 ![Salve 確認](setup-slave-linux-01.png)    
