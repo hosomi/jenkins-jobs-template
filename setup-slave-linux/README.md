@@ -277,6 +277,132 @@ INFO: Connected
 ![Salve 確認](setup-slave-linux-01.png)    
 
 表示されていたら作業は完了です。  
+Slave を終了するには ``CTRL + C`` で停止できます。  
+
+
+
+---
+
+これからの作業はオプション。  
+
+### 6 slave 起動を自動化
+
+docker start 毎に手動で slave 起動は面倒なので自動化します。  
+既に slave が起動済みの場合、 ``CTRL + C`` で終了させます。  
+
+### 6.1 サービス起動するシェルスクリプトファイルを作成
+
+``vi /swarm-launcher/slave.sh``:
+
+```bash
+[root@54d1669b20a1 /]# chmod +x /swarm-launcher/slave.sh
+```
+
+slave.sh のファイル内容：  
+
+```bash
+#!/bin/bash
+
+cd /swarm-launcher
+./gradlew
+```
+
+### 6.2 Unit 定義ファイルを作成
+
+``vi /etc/systemd/system/jenkins-slave.service``:  
+
+```bash
+[root@54d1669b20a1 /]# vi /etc/systemd/system/jenkins-slave.service
+```
+
+jenkins-slave.service のファイル内容：  
+
+```ini
+[Unit]
+Description = Jenkins slave service
+
+[Service]
+User = root
+EnvironmentFile=/etc/systemd/env
+ExecStart = /swarm-launcher/slave.sh
+Restart = always
+Type = simple
+
+[Install]
+WantedBy = multi-user.target
+```
+
+### 6.3 EnvironmentFile を作成
+
+``vi /etc/systemd/env``:  
+
+```bash
+[root@54d1669b20a1 /]# vi /etc/systemd/env
+```
+
+env ファイルの内容：  
+
+```ini
+JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64/jre"
+```
+
+### 6.4 サービス起動するシェルスクリプトファイルに実行権限を付与
+
+``chmod +x /swarm-launcher/slave.sh`` 
+
+```bash
+[root@54d1669b20a1 /]# chmod +x /swarm-launcher/slave.sh
+```
+
+### 6.4 サービスに登録、自動起動有効化
+　  
+``systemctl enable jenkins-slave``:  
+
+```bash
+[root@54d1669b20a1 /]# systemctl enable jenkins-slave
+Created symlink from /etc/systemd/system/multi-user.target.wants/jenkins-slave.service to /etc/systemd/system/jenkins-slave.service.
+```
+　  
+### 6.5 サービスを起動
+
+``systemctl start jenkins-slave``:  
+
+```
+[root@54d1669b20a1 /]# systemctl start jenkins-slave
+```
+
+### 6.6 サービスが起動しているか確認
+
+``systemctl status jenkins-slave``:  
+
+```bash
+[root@54d1669b20a1 /]# systemctl status jenkins-slave
+● jenkins-slave.service - Jenkins slave service
+   Loaded: loaded (/etc/systemd/system/jenkins-slave.service; enabled; vendor preset: disabled)
+   Active: active (running) since Sun 2020-07-05 03:28:42 UTC; 19min ago
+ Main PID: 420 (slave.sh)
+   CGroup: /docker/54d1669b20a12b175754c26d7b18eadcfa692a156e909316152f6adf55d38653/system.slice/jenkins-slave.service
+           ├─420 /bin/bash /swarm-launcher/slave.sh
+           ├─421 /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64/jre/bin/java -Dorg.gradle.appname=...
+           ├─442 /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64/jre/bin/java -XX:+HeapDumpOnOutOfM...
+           └─477 /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64/jre/bin/java -Dfile.encoding=UTF-8...
+           ‣ 420 /bin/bash /swarm-launcher/slave.sh
+
+Jul 05 03:28:45 54d1669b20a1 slave.sh[420]: Jul 05, 2020 3:28:45 AM hudson.remoting.jnlp.Main$CuiListener status
+Jul 05 03:28:45 54d1669b20a1 slave.sh[420]: INFO: Handshaking
+Jul 05 03:28:45 54d1669b20a1 slave.sh[420]: Jul 05, 2020 3:28:45 AM hudson.remoting.jnlp.Main$CuiListener status
+Jul 05 03:28:45 54d1669b20a1 slave.sh[420]: INFO: Connecting to 172.17.0.2:50000
+Jul 05 03:28:45 54d1669b20a1 slave.sh[420]: Jul 05, 2020 3:28:45 AM hudson.remoting.jnlp.Main$CuiListener status
+Jul 05 03:28:45 54d1669b20a1 slave.sh[420]: INFO: Trying protocol: JNLP4-connect
+Jul 05 03:28:45 54d1669b20a1 slave.sh[420]: Jul 05, 2020 3:28:45 AM hudson.remoting.jnlp.Main$CuiListener status
+Jul 05 03:28:45 54d1669b20a1 slave.sh[420]: INFO: Remote identity confirmed: 5d:3c:67:85:6e:68:74:04:66:42:...d4:e2
+Jul 05 03:28:46 54d1669b20a1 slave.sh[420]: Jul 05, 2020 3:28:46 AM hudson.remoting.jnlp.Main$CuiListener status
+Jul 05 03:28:46 54d1669b20a1 slave.sh[420]: INFO: Connected
+Hint: Some lines were ellipsized, use -l to show in full.
+```
+
+● が緑色で表示されていれば正常に起動済みです。  
+次回以降は ``docker start centos7`` のみで slave も起動します。  
 
 
 
