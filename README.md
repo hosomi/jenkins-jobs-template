@@ -17,16 +17,18 @@ Jenkins Job パイプライン(Jenkinsfile)のテンプレート。
 
 ## 1. Setup
 
-### 1.1 Jenkins master
+### 1.1 Node
+
+### 1.1.1 Jenkins master
 
 [こちら](setup-master) の手順で Jenkins master を Dcoker で構築します。
 
-### 1.2 Jenkins slave  
+### 1.1.2 Jenkins slave  
 
 [こちら](setup-slave-linux) の手順で Jenkins slave を Dcoker で構築します。    
 
 
-### 1.3 Jenkinsfile エディター
+### 2. Jenkinsfile エディター
 
 テキストエディタなら何でも良いですが、Visual Studio Code を推奨します。  
 　  
@@ -34,19 +36,20 @@ Jenkins Job パイプライン(Jenkinsfile)のテンプレート。
 * [JenkinsFile Support - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ivory-lab.jenkinsfile-support)  Jenkinsfile をサポート、比較的更新が多いものを選択。
 
 
-## 2. Template
+## 3. Template
 
 基本的なパイプラインジョブ作成手順は[こちら](template/single-node-only/README.md)を参照してください。  
 また、定義を Pipeline script from SCM を選択して作成する手順は[こちら](template/single-node-only/SCM.md)を参照してください。  
 何れも master ノードで hello world を表示する手順です。  
 
-### 2.1 sigle node
+### 3.1 sigle node
 
 sigle ノードのみで動作するテンプレートです。
 
 | Title | Node | Keyword | Jenkinsfile | Script Path | Description 
 | ----- | ---- | ---- | :---------: |----------- |----------- 
 | hello world | master | [node](https://www.jenkins.io/doc/book/pipeline/#node), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](template/single-node-only/master-hello-world.Jenkinsfile) | template/single-node-only/hello-world.Jenkinsfile | master ノードのシェルスクリプトで echo します。 
+| hello world | linux-slave | " | [:page_facing_up:](template/single-node-only/linux-slave-hello-world.Jenkinsfile) | template/single-node-only/linux-slave-hello-world.Jenkinsfile | linux-salve のシェルスクリプトで echo します。 
 
 　  
 　  
