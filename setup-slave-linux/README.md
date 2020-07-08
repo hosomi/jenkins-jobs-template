@@ -179,12 +179,12 @@ salve を起動するアプリケーションは Java のランタイムだけ�
 
 vi のキーボード操作 
 
-``shift + g``: 最終行に移動。  
-``o``: 一行追加して編集モード。  
-``export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64/jre``: 入力または貼り付けてください。  
-``esc``: 一旦入力を終了。
-``:``: :（コロン）コマンドモードに移行。  
-``wq ``: 保存して終了（wq の次に enter）。  
+``shift + g`` 最終行に移動。  
+``o`` 一行追加して編集モード。  
+``export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64/jre`` 入力または貼り付けてください。  
+``esc`` 一旦入力を終了。  
+``:`` コマンドモードに移行。  
+``wq `` 保存して終了（wq の次に enter）。  
 
 
 #### 5.2.2 /etc/profile を読み込む
@@ -274,7 +274,7 @@ INFO: Connected
 ブラウザから Jenkins ログイン（``http://localhost:8080``）して Slave が追加されている確認。  
 
 
-![Salve 確認](setup-slave-linux-01.png)    
+![Slave 確認](setup-slave-linux-01.png)    
 
 表示されていたら作業は完了です。  
 Slave を終了するには ``CTRL + C`` で停止できます。  
@@ -295,7 +295,7 @@ docker start 毎に手動で slave 起動は面倒なので自動化します。
 ``vi /swarm-launcher/slave.sh``:
 
 ```bash
-[root@54d1669b20a1 /]# chmod +x /swarm-launcher/slave.sh
+[root@54d1669b20a1 /]# vi /swarm-launcher/slave.sh
 ```
 
 slave.sh のファイル内容：  
