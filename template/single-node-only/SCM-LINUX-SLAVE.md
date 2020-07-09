@@ -5,7 +5,7 @@ Linux Slave で Hello, World! します。
 
 ## パイプランジョブ作成の基本情報を設定
 
-1. 作成するジョブ名に ``linux-salve-only-from-scm`` を入力。
+1. 作成するジョブ名に ``linux-slave-only-from-scm`` を入力。
 1. 作成するジョブの種類から ``パイプライン`` を選択。
 1. OK ボタンをクリック。
 
