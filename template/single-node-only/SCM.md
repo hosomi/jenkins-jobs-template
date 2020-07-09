@@ -38,7 +38,7 @@
 | ” | リポジトリ URL | https://github.com/hosomi/jenkins-jobs-template.git
 | ” | 認証情報 | - なし
 | ビルドするブランチ | 	ブランチ指定子 (空欄はすべてを指定)	 | */master
-| Script Path | - | template/master-node-only/hello-world.Jenkinsfile
+| Script Path | - | template/single-node-only/master-hello-world.Jenkinsfile
 
 ### 4.3 保存ボタンをクリック
 

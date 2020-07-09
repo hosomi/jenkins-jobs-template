@@ -49,7 +49,7 @@ sigle ノードのみで動作するテンプレートです。
 | Title | Node | Keyword | Jenkinsfile | Script Path | Description 
 | ----- | ---- | ---- | :---------: |----------- |----------- 
 | hello world | master | [node](https://www.jenkins.io/doc/book/pipeline/#node), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](template/single-node-only/master-hello-world.Jenkinsfile) | template/single-node-only/hello-world.Jenkinsfile | master ノードのシェルスクリプトで echo します。 
-| hello world | linux-slave | " | [:page_facing_up:](template/single-node-only/linux-slave-hello-world.Jenkinsfile) | template/single-node-only/linux-slave-hello-world.Jenkinsfile | linux-salve のシェルスクリプトで echo します。 
+| hello world | linux-slave | " | [:page_facing_up:](template/single-node-only/linux-slave-hello-world.Jenkinsfile) | template/single-node-only/linux-slave-hello-world.Jenkinsfile | linux-salve のシェルスクリプトで echo します。  [作成手順](template/single-node-only/SCM-LINUX-SLAVE.md)  
 
 　  
 　  
