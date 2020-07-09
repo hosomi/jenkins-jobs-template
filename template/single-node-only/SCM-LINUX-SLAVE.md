@@ -1,7 +1,7 @@
 # Hello, World! Linux Slave
 
 Linux Slave で Hello, World! します。  
-基本的には[パイプラインジョブ（Pipeline script from SCM）の作成手順](SCM.md)の手順と同じです。  
+基本的には[パイプラインジョブ（Pipeline script from SCM）の作成手順](SCM.md)と同じです。  
 
 ## パイプランジョブ作成の基本情報を設定
 
