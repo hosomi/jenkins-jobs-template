@@ -51,8 +51,47 @@ Jenkins に ``Blue Ocean`` プラグインを追加します。
 再起動している旨の画面が表示されます、しばらくするとログイン画面に移動します。  
 
 
+---
+
+## 2. Blue Ocean の利用
+
+メニューに ``Open Blue Ocean`` が追加されています。  
+クリックしてください。   
+
+![Open Blue Ocean](blue-ocean-usage-01.png)  
+
+
+## 2.1 Blue Ocean 実行結果の確認方法
+
+1. 一覧から１つ目の ``linux-slave-only-from-scm`` を選択してください。
+
+![実行結果の確認方法 : 1](blue-ocean-usage-02.png)  
 　  
+　 
+
+2. 実行結果の一覧から１つ目を選択してください。  
+
+![実行結果の確認方法 : 2](blue-ocean-usage-03.png)  
+
 　  
+　 
+
+3. 実行結果の echo "Hello, World!"— Shell Script をクリック
+
+![実行結果の確認方法 : 3](blue-ocean-usage-04.png)   
+
+ここでは一つしかありませんが、パイプラインのステップの数だけ増えていきます。  
+
+　  
+　 
+
+
+　  
+　 
+
+
+
+
 　  
 　  
 　  
