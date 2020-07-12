@@ -19,6 +19,8 @@ Jenkins Job パイプライン(Jenkinsfile)のテンプレート。
 
 ### 1.1 Node
 
+`` :exclamation: ご注意：Node は本番環境を想定して構築している内容ではありません。``
+
 ### 1.1.1 Jenkins master
 
 [こちら](setup-master) の手順で Jenkins master を Dcoker で構築します。
@@ -52,6 +54,11 @@ sigle ノードのみで動作するテンプレートです。
 | hello world | linux-slave | " | [:page_facing_up:](template/single-node-only/linux-slave-hello-world.Jenkinsfile) | template/single-node-only/linux-slave-hello-world.Jenkinsfile | linux-salve のシェルスクリプトで echo します。  [作成手順](template/single-node-only/SCM-LINUX-SLAVE.md)  
 
 　  
+### 3.2 multi node
+
+| Title | Nodes | Keyword | Jenkinsfile | Script Path | Description 
+| ----- | ---- | ---- | :---------: |----------- |----------- 
+| multiple nodes hello world | master, linux-slave | [node](https://www.jenkins.io/doc/book/pipeline/#node), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](template/multi-node/master-linux-node-hello-world.Jenkinsfile) | template/multi-node/master-linux-node-hello-world.Jenkinsfile |  master → linux-slave の順で echo します。 
 　  
 　  
 　  
