@@ -7,7 +7,7 @@
 
 次の 2 つのパイプラインはビルドしている内容は同じですが、Blue Ocean で結果を表示した場合、見た目が変わります。  
 
-[master-linux-node-hello-world.Jenkinsfile](../master-linux-node-hello-world.Jenkinsfile):  
+[master-linux-node-hello-world.Jenkinsfile](../../templates/multi-node/master-linux-node-hello-world.Jenkinsfile):  
 
 ```groovy
 node('master') {
@@ -24,7 +24,7 @@ Blue Ocean で結果表示：
 
 ---
 
-[master-linux-node-hello-world-stage.Jenkinsfile](../master-linux-node-hello-world-stage.Jenkinsfile):  
+[master-linux-node-hello-world-stage.Jenkinsfile](../../templates/multi-node/master-linux-node-hello-world-stage.Jenkinsfile):  
 
 ```groovy
 node('master') {

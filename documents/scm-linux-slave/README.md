@@ -1,7 +1,7 @@
 # Hello, World! Linux Slave
 
 Linux Slave で Hello, World! します。  
-基本的には[パイプラインジョブ（Pipeline script from SCM）の作成手順](SCM.md)と同じです。  
+基本的には[パイプラインジョブ（Pipeline script from SCM）の作成手順](../pipeline-script-from-scm/)と同じです。  
 
 ## パイプランジョブ作成の基本情報を設定
 
@@ -18,7 +18,7 @@ Linux Slave で Hello, World! します。
 | ” | リポジトリ URL | https://github.com/hosomi/jenkins-jobs-template.git
 | ” | 認証情報 | - なし
 | ビルドするブランチ | 	ブランチ指定子 (空欄はすべてを指定)	 | */master
-| Script Path | - | template/single-node-only/linux-slave-hello-world.Jenkinsfile
+| Script Path | - | templates/single-node/linux-slave-hello-world.Jenkinsfile
 
 
 ## 実行結果確認
@@ -26,7 +26,7 @@ Linux Slave で Hello, World! します。
 echo している内容は master と同じですが、
 linux-slave 上で動作している事を確認してください。  
 
-![実行結果確認](linux-slave-only-scm-01.png)   
+![実行結果確認](scm-linux-slave-01.png)   
 
 
 
