@@ -23,11 +23,11 @@ Jenkins Job パイプライン(Jenkinsfile)のテンプレート。
 
 ### 1.1.1 Jenkins master
 
-[こちら](setup-master) の手順で Jenkins master を Dcoker で構築します。
+[こちら](documents/setup-master) の手順で Jenkins master を Dcoker で構築します。
 
 ### 1.1.2 Jenkins slave  
 
-[こちら](setup-slave-linux) の手順で Jenkins slave を Dcoker で構築します。    
+[こちら](documents/setup-slave-linux) の手順で Jenkins slave を Dcoker で構築します。    
 
 
 ### 2. Jenkinsfile エディター
@@ -40,26 +40,33 @@ Jenkins Job パイプライン(Jenkinsfile)のテンプレート。
 
 ## 3. Template
 
-基本的なパイプラインジョブ作成手順は[こちら](template/single-node-only/README.md)を参照してください。  
-また、定義を Pipeline script from SCM を選択して作成する手順は[こちら](template/single-node-only/SCM.md)を参照してください。  
+基本的なパイプラインジョブ作成手順は[こちら](documents/pipeline-script-basic/)を参照してください。  
+また、定義を Pipeline script from SCM を選択して作成する手順は[こちら](documents/pipeline-script-from-scm/)を参照してください。  
 何れも master ノードで hello world を表示する手順です。  
+　  
+
 
 ### 3.1 sigle node
 
 sigle ノードのみで動作するテンプレートです。
 
+凡例：  
+ * Jenkinsfile : :page_facing_up: アイコンのリンク先にパイプラインスクリプトを添付しています。  
+ * Script Path : Pipeline script from SCM を選択して Script Path の内容を貼り付けて実行できます。  
+
+
 | Title | Node | Keyword | Jenkinsfile | Script Path | Description 
 | ----- | ---- | ---- | :---------: |----------- |----------- 
-| hello world | master | [node](https://www.jenkins.io/doc/book/pipeline/#node), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](template/single-node-only/master-hello-world.Jenkinsfile) | template/single-node-only/hello-world.Jenkinsfile | master ノードのシェルスクリプトで echo します。 
-| hello world | linux-slave | " | [:page_facing_up:](template/single-node-only/linux-slave-hello-world.Jenkinsfile) | template/single-node-only/linux-slave-hello-world.Jenkinsfile | linux-salve のシェルスクリプトで echo します。  [作成手順](template/single-node-only/SCM-LINUX-SLAVE.md)  
+| hello world | master | [node](https://www.jenkins.io/doc/book/pipeline/#node), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](templates/single-node/master-hello-world.Jenkinsfile) | templates/single-node/hello-world.Jenkinsfile | master ノードのシェルスクリプトで echo します。 
+| hello world | linux-slave | " | [:page_facing_up:](templates/single-node/linux-slave-hello-world.Jenkinsfile) | template/single-node-only/linux-slave-hello-world.Jenkinsfile | linux-salve のシェルスクリプトで echo します。  [[作成手順補足]](documents/scm-linux-slave/)  
 
 　  
 ### 3.2 multi nodes
 
 | Title | Nodes | Keyword | Jenkinsfile | Script Path | Description 
 | ----- | ---- | ---- | :---------: |----------- |----------- 
-| multiple nodes hello world | master, linux-slave | [node](https://www.jenkins.io/doc/book/pipeline/#node), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](template/multi-node/master-linux-node-hello-world.Jenkinsfile) | template/multi-node/master-linux-node-hello-world.Jenkinsfile |  master → linux-slave の順で echo します。 
-| multiple nodes stage hello world | master, linux-slave | [node](https://www.jenkins.io/doc/book/pipeline/#node), [stage](https://www.jenkins.io/doc/book/pipeline/#stage), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](template/multi-node/master-linux-node-hello-world-stage.Jenkinsfile) | template/multi-node/master-linux-node-hello-world-stage.Jenkinsfile |  master → linux-slave の順でステージブロックで echo します。  
+| multiple nodes hello world | master, linux-slave | [node](https://www.jenkins.io/doc/book/pipeline/#node), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](templates/multi-node/master-linux-node-hello-world.Jenkinsfile) | templates/multi-node/master-linux-node-hello-world.Jenkinsfile |  master → linux-slave の順で echo します。 
+| multiple nodes stage hello world | master, linux-slave | [node](https://www.jenkins.io/doc/book/pipeline/#node), [stage](https://www.jenkins.io/doc/book/pipeline/#stage), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](templates/multi-node/master-linux-node-hello-world-stage.Jenkinsfile) | templates/multi-node/master-linux-node-hello-world-stage.Jenkinsfile |  master → linux-slave の順でステージブロックで echo します。 [[ステージブロック補足]](documents/pipelines/stage-block/)
 
 
 
