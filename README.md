@@ -13,6 +13,7 @@ Jenkins Job パイプライン(Jenkinsfile)のテンプレート。
 
 * [Jenkins](https://www.jenkins.io/)  
 * [Jenkins User Documentation](https://www.jenkins.io/doc/)  
+  * [Pipeline](https://www.jenkins.io/doc/book/pipeline/)
 * [Using a Jenkinsfile](https://www.jenkins.io/doc/book/pipeline/jenkinsfile/)    
 
 ## 1. Setup
@@ -23,7 +24,8 @@ Jenkins Job パイプライン(Jenkinsfile)のテンプレート。
 
 ### 1.1.1 Jenkins master
 
-[こちら](documents/setup-master) の手順で Jenkins master を Dcoker で構築します。
+[こちら](documents/setup-master) の手順で Jenkins master を Dcoker で構築します。 
+また、基本的な Docker 操作も記載しています。  
 
 ### 1.1.2 Jenkins slave  
 
@@ -67,6 +69,7 @@ sigle ノードのみで動作するテンプレートです。
 | ----- | ---- | ---- | :---------: |----------- |----------- 
 | multiple nodes hello world | master, linux-slave | [node](https://www.jenkins.io/doc/book/pipeline/#node), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](templates/multi-node/master-linux-node-hello-world.Jenkinsfile) | templates/multi-node/master-linux-node-hello-world.Jenkinsfile |  master → linux-slave の順で echo します。 
 | multiple nodes stage hello world | master, linux-slave | [node](https://www.jenkins.io/doc/book/pipeline/#node), [stage](https://www.jenkins.io/doc/book/pipeline/#stage), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](templates/multi-node/master-linux-node-hello-world-stage.Jenkinsfile) | templates/multi-node/master-linux-node-hello-world-stage.Jenkinsfile |  master → linux-slave の順でステージブロックで echo します。 [[ステージブロック補足]](documents/pipelines/stage-block/)
+| multiple nodes stage parallel hello world | master, linux-slave | [node](https://www.jenkins.io/doc/book/pipeline/#node), [stage](https://www.jenkins.io/doc/book/pipeline/#stage), [parallel](https://www.jenkins.io/doc/book/pipeline/syntax/#parallel), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](templates/multi-node/master-linux-node-stage-parallel.Jenkinsfile) | templates/multi-node/master-linux-node-stage-parallel.Jenkinsfile |  master, linux-slave の並列で echo します。
 
 
 
