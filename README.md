@@ -46,14 +46,8 @@ master のセットアップが終わったら 1.1.2 Jenkins slave 構築前に 
 
 | plugins | Description 
 | ----- | ---- 
-| Swarm plugin | 通常は master から slave に接続しますが、このプラグインは slave から master に接続できるようになります。  [[追加手順]][Swarm plugin](documents/plugins/swarm/)  
-| Blue Ocean | パイプラインの視覚化で利用します。  [[追加手順と利用方法]][Blue Ocean](documents/plugins/blue-ocean/)  
-
-
-
-
-
-
+| Swarm plugin | 通常は master から slave に接続しますが、このプラグインは slave から master に接続できるようになります。  [[追加手順]](documents/plugins/swarm/)  
+| Blue Ocean | パイプラインの視覚化で利用します。  [[追加手順と利用方法]](documents/plugins/blue-ocean/)  
 
 ## 4. Template
 

@@ -1,5 +1,5 @@
 
-# Swarm Plugin を追加
+# Swarm Plugin
 
 Jenkins slave の追加をやりやすくするために、プラグインを追加します。  
 ブラウザから ``http://localhost:8080`` にアクセスしてください。  
