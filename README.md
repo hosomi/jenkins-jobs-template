@@ -1,6 +1,7 @@
 # jenkins-jobs-template
 
-Jenkins Job パイプライン(Jenkinsfile)のテンプレート。  
+Jenkins Job パイプライン(Jenkinsfile)の基礎的なテンプレート。  
+環境の構築から行い、基本的な Jenkins の操作、パイプラインの構文、シンタックスを定義してジョブを実行して結果を確認できます。  
 　  
 　  
 ``随時更新中``  
@@ -26,11 +27,12 @@ Jenkins Job パイプライン(Jenkinsfile)のテンプレート。
 
 [こちら](documents/setup-master) の手順で Jenkins master を Dcoker で構築します。 
 また、基本的な Docker 操作も記載しています。  
+master のセットアップが終わったら 1.1.2 Jenkins slave 構築前に [Swarm plugin](documents/plugins/swarm/) を追加してください。  
+
 
 ### 1.1.2 Jenkins slave  
 
 [こちら](documents/setup-slave-linux) の手順で Jenkins slave を Dcoker で構築します。    
-
 
 ### 2. Jenkinsfile エディター
 
@@ -39,16 +41,27 @@ Jenkins Job パイプライン(Jenkinsfile)のテンプレート。
 * [Visual Studio Code – コード エディター | Microsoft Azure](https://azure.microsoft.com/ja-jp/products/visual-studio-code/)
 * [JenkinsFile Support - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ivory-lab.jenkinsfile-support)  Jenkinsfile をサポート、比較的更新が多いものを選択。
 
+## 3. プラグイン導入
 
-## 3. Template
+
+| plugins | Description 
+| ----- | ---- 
+| Swarm plugin | 通常は master から slave に接続しますが、このプラグインは slave から master に接続できるようになります。  [[追加手順]][Swarm plugin](documents/plugins/swarm/)  
+| Blue Ocean | パイプラインの視覚化で利用します。  [[追加手順と利用方法]][Blue Ocean](documents/plugins/blue-ocean/)  
+
+
+
+
+
+
+
+## 4. Template
 
 基本的なパイプラインジョブ作成手順は[こちら](documents/pipeline-script-basic/)を参照してください。  
 また、定義を Pipeline script from SCM を選択して作成する手順は[こちら](documents/pipeline-script-from-scm/)を参照してください。  
 何れも master ノードで hello world を表示する手順です。  
 　  
-
-
-### 3.1 sigle node
+### 4.1 sigle node
 
 sigle ノードのみで動作するテンプレートです。
 
@@ -63,7 +76,7 @@ sigle ノードのみで動作するテンプレートです。
 | hello world | linux-slave | " | [:page_facing_up:](templates/single-node/linux-slave-hello-world.Jenkinsfile) | template/single-node-only/linux-slave-hello-world.Jenkinsfile | linux-salve のシェルスクリプトで echo します。  [[作成手順補足]](documents/scm-linux-slave/)  
 
 　  
-### 3.2 multi nodes
+### 4.2 multi nodes
 
 | Title | Nodes | Keyword | Jenkinsfile | Script Path | Description 
 | ----- | ---- | ---- | :---------: |----------- |----------- 

@@ -198,9 +198,10 @@ Save and Finish をクリックしてください。
 ![Jenkins is ready!](jenkins-docker-run-06.png)  
 
 
+---
 
 
-## 4. docker image (Jenkins) 停止方法
+## 4. Docker image (Jenkins) 停止方法
 
 ### 4.1 停止対象を調べる
 
@@ -281,50 +282,12 @@ STATUS に Up が表示されていれば起動している状態です。
 ブラウザから ``http://localhost:8080`` にアクセスしてください。  
 
 
-## 6. Jenkins にプラグインを追加する
-
-Jenkins slave の追加をやりやすくするために、プラグインを追加します。  
-ブラウザから ``http://localhost:8080`` にアクセスしてください。  
-
-### 6.1 メニューから Jenkinsの管理をクリック
-
-![Jenkinsの管理](jenkins-plugin-01.png)  
-
-### 6.2 Jenkinsの管理からプラグインの管理をクリック
-
-![プラグインの管理](jenkins-plugin-02.png)  
-
-
-### 6.3 プラグインマネージャーからプラグインを追加
-
-1. ``利用可能タブ`` を選択。
-2. 検索ボックスに ``Swarm`` と入力。
-3. 検索された Swarm にチェックする。
-4. ダウンロードして再起動後にインストールをクリックする。
-
-
-![プラグインマネージャー](jenkins-plugin-03.png)  
-
-
-### 6.4 Jenkins 再起動
-
-プラグインのインストール/アップグレード画面で  
-``インストール完了後、ジョブがなければJenkinsを再起動する``  
-にチェックをいれてください。  
-
-![インストール完了後、ジョブがなければJenkinsを再起動する](jenkins-plugin-04.png)  
-
-
-ブラウザから ``http://localhost:8080`` にアクセスしてください。  
-再起動している旨の画面が表示されます、しばらくするとログイン画面に移動します。  
-
-
-## 7. Docker image を消したい場合
+## 6. Docker image を消したい場合
 
 間違って ``docker run`` してイメージが複数できて消したい場合。
 
 
-### 7.1 削除対象を調べる
+### 6.1 削除対象を調べる
 
 ``docker ps -a`` :   
 
@@ -339,7 +302,7 @@ CONTAINER ID        IMAGE                 COMMAND                  CREATED      
 この例ですと CONTAINER ID は 3dfa722930e6 です。   
 起動しているので先に停止します。  
 
-### 7.2 削除対象を停止する
+### 6.2 削除対象を停止する
 
 停止済みの場合は飛ばして次へ。
 
@@ -350,7 +313,7 @@ CONTAINER ID        IMAGE                 COMMAND                  CREATED      
 3dfa722930e6
 ```
 
-### 7.3 削除する
+### 6.3 削除する
 
 ``docker rm [CONTAINER ID]`` :  
 
@@ -359,7 +322,7 @@ CONTAINER ID        IMAGE                 COMMAND                  CREATED      
 3dfa722930e6
 ```
 
-### 7.4 削除されているか確認する
+### 6.4 削除されているか確認する
 
 ``docker ps -a`` :   
 
