@@ -62,15 +62,11 @@ master のセットアップが終わったら 1.1.2 Jenkins slave 構築前に 
 また、定義を Pipeline script from SCM を選択して作成する手順は[こちら](documents/pipeline-script-from-scm/)を参照してください。  
 何れも master ノードで hello world を表示する手順です。  
 　  
-
 ---
-　  
-
 
 凡例：  
  * Jenkinsfile : :page_facing_up: アイコンのリンク先にパイプラインスクリプトを添付しています。  
  * Script Path : Pipeline script from SCM を選択して Script Path の内容を貼り付けて実行できます。  
-　  
 
 ### 4.1 syntax
 
@@ -79,6 +75,8 @@ master ノードで syntax の動作を確認するテンプレートです。
 | Synatx | Jenkinsfile | Script Path | Description 
 | ----- | :---------: | ----------- | ----------- 
 | [node](https://www.jenkins.io/doc/book/pipeline/#node) | [:page_facing_up:](templates/syntax/syntax-node.Jenkinsfile) | templates/syntax/syntax-node.Jenkinsfile | パイプラインの作業をノードブロック内に制限します、必須ではありませんが意図的に指定ノードのみで作業させたいときに指定する重要な Synatax です。  
+| [stage](https://www.jenkins.io/doc/book/pipeline/#stage)  | [:page_facing_up:](templates/syntax/syntax-stage.Jenkinsfile) | templates/syntax/syntax-stage.Jenkinsfile | ビルド、テスト、デプロイ等のタスク単位で進捗状況を視覚化または表示する単位で纏める事ができます。当解説では主に視覚化を目的で Blue Ocean プラグインを利用しています。  
+| [parallel](https://www.jenkins.io/doc/book/pipeline/syntax/#parallel) | [:page_facing_up:](templates/syntax/syntax-parallel.Jenkinsfile) | templates/syntax/syntax-parallel.Jenkinsfile | 並列で各タスク処理するように指定する Syntax です。[Jenkinsfile](templates/syntax/syntax-parallel.Jenkinsfile) は並列で複数のリポジトリから git clone してビルド → テスト → デプロイするパターンのテンプレートです。  
 
 
 
@@ -93,7 +91,6 @@ sigle ノードのみで動作するテンプレートです。
 | hello world | master | [node](https://www.jenkins.io/doc/book/pipeline/#node), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](templates/single-node/master-hello-world.Jenkinsfile) | templates/single-node/hello-world.Jenkinsfile | master ノードのシェルスクリプトで echo します。 
 | hello world | linux-slave | " | [:page_facing_up:](templates/single-node/linux-slave-hello-world.Jenkinsfile) | template/single-node-only/linux-slave-hello-world.Jenkinsfile | linux-salve のシェルスクリプトで echo します。  [[作成手順補足]](documents/scm-linux-slave/)  
 
-　  
 ### 4.3 multi nodes
 
 複数ノードで動作するテンプレートです。 
