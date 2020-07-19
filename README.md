@@ -49,7 +49,7 @@ master のセットアップが終わったら 1.1.2 Jenkins slave 構築前に 
 | Blue Ocean | パイプラインの視覚化で利用します。  [[追加手順と利用方法]](documents/plugins/blue-ocean/)  
 | NodeJS | Jenkins から NodeJS を利用できるようになります。  [[追加手順と利用方法]](documents/plugins/nodejs/)  
 
-## 4. Template
+## 4. Template  
   
 
 基本的なパイプラインジョブ作成手順は[こちら](documents/pipeline-script-basic/)を参照してください。  
