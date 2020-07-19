@@ -77,7 +77,7 @@ master のセットアップが終わったら 1.1.2 Jenkins slave 構築前に 
 master ノードで syntax の動作を確認するテンプレートです。  
 
 | Synatx | Jenkinsfile | Script Path | Description 
-| ----- |----------- 
+| ----- | :---------: | ----------- | ----------- 
 | [node](https://www.jenkins.io/doc/book/pipeline/#node) | [:page_facing_up:](templates/syntax/syntax-node.Jenkinsfile) | templates/syntax/syntax-node.Jenkinsfile | パイプラインの作業をノードブロック内に制限します、必須ではありませんが意図的に指定ノードのみで作業させたいときに指定する重要な Synatax です。  
 
 
