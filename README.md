@@ -43,20 +43,14 @@ master のセットアップが終わったら 1.1.2 Jenkins slave 構築前に 
 
 ## 3. プラグイン導入
 
-
 | plugins | Description 
 | ----- | ---- 
 | Swarm plugin | 通常は master から slave に接続しますが、このプラグインは slave から master に接続できるようになります。  [[追加手順]](documents/plugins/swarm/)  
 | Blue Ocean | パイプラインの視覚化で利用します。  [[追加手順と利用方法]](documents/plugins/blue-ocean/)  
 | NodeJS | Jenkins から NodeJS を利用できるようになります。  [[追加手順と利用方法]](documents/plugins/nodejs/)  
 
-
-
-
-
-
-
 ## 4. Template
+  
 
 基本的なパイプラインジョブ作成手順は[こちら](documents/pipeline-script-basic/)を参照してください。  
 また、定義を Pipeline script from SCM を選択して作成する手順は[こちら](documents/pipeline-script-from-scm/)を参照してください。  
