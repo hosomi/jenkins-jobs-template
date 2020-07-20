@@ -14,8 +14,10 @@ Jenkins Job パイプライン(Jenkinsfile)の基礎的なテンプレート。
 
 * [Jenkins](https://www.jenkins.io/)  
 * [Jenkins User Documentation](https://www.jenkins.io/doc/)  
+  * [Getting started with Pipeline](https://www.jenkins.io/doc/book/pipeline/getting-started/)
   * [Pipeline](https://www.jenkins.io/doc/book/pipeline/)
-* [Using a Jenkinsfile](https://www.jenkins.io/doc/book/pipeline/jenkinsfile/)    
+  * [Pipeline Examples](https://www.jenkins.io/doc/pipeline/examples/)
+  * [Using a Jenkinsfile](https://www.jenkins.io/doc/book/pipeline/jenkinsfile/)    
 
 ## 1. Setup
 
@@ -46,7 +48,7 @@ master のセットアップが終わったら 1.1.2 Jenkins slave 構築前に 
 | plugins | Description 
 | ----- | ---- 
 | Swarm plugin | 通常は master から slave に接続しますが、このプラグインは slave から master に接続できるようになります。  [[追加手順]](documents/plugins/swarm/)  
-| Blue Ocean | パイプラインの視覚化で利用します。  [[追加手順と利用方法]](documents/plugins/blue-ocean/)  
+| [Blue Ocean](https://www.jenkins.io/doc/book/blueocean/) | パイプラインの視覚化で利用します。  [[追加手順と利用方法]](documents/plugins/blue-ocean/)  
 | NodeJS | Jenkins から NodeJS を利用できるようになります。  [[追加手順と利用方法]](documents/plugins/nodejs/)  
 
 
@@ -62,17 +64,22 @@ master のセットアップが終わったら 1.1.2 Jenkins slave 構築前に 
 凡例：  
  * Jenkinsfile : :page_facing_up: アイコンのリンク先にパイプラインスクリプトを添付しています。  
  * Script Path : Pipeline script from SCM を選択して Script Path の内容を貼り付けて実行できます。  
+ * Blue Ocean : Blue Ocean の実行結果です。  
 
-### 4.1 syntax
+### 4.1 Syntax
 
-master ノードで syntax の動作を確認するテンプレートです。  
+このテンプレートで利用する主な Syntax です。  
+何れも master ノードで動作する Jenkinsfile です。  
 
-| Synatx | Jenkinsfile | Script Path | Description 
-| ----- | :---------: | ----------- | ----------- 
-| [node](https://www.jenkins.io/doc/book/pipeline/#node) | [:page_facing_up:](templates/syntax/syntax-node.Jenkinsfile) | templates/syntax/syntax-node.Jenkinsfile | パイプラインの作業をノードブロック内に制限します、必須ではありませんが意図的に指定ノードのみで作業させたいときに指定する重要な Synatax です。  
-| [stage](https://www.jenkins.io/doc/book/pipeline/#stage)  | [:page_facing_up:](templates/syntax/syntax-stage.Jenkinsfile) | templates/syntax/syntax-stage.Jenkinsfile | ビルド、テスト、デプロイ等のタスク単位で進捗状況を視覚化または表示する単位で纏める事ができます。当解説では主に視覚化を目的で Blue Ocean プラグインを利用しています。  
-| [parallel](https://www.jenkins.io/doc/book/pipeline/syntax/#parallel) | [:page_facing_up:](templates/syntax/syntax-parallel.Jenkinsfile) | templates/syntax/syntax-parallel.Jenkinsfile | 並列で各タスク処理するように指定する Syntax です。[Jenkinsfile](templates/syntax/syntax-parallel.Jenkinsfile) は並列で複数のリポジトリから git clone してビルド → テスト → デプロイするパターンのテンプレートです。  
 
+| Syntax | Jenkinsfile | Script Path | Description | BlueOcean
+| ----- | :---------: | ----------- | ----------- | -----------
+| [node](https://www.jenkins.io/doc/book/pipeline/#node) | [:page_facing_up:](templates/syntax/syntax-node.Jenkinsfile) | templates/syntax/syntax-node.Jenkinsfile | パイプラインの作業をノードブロック内に制限します、必須ではありませんが意図的に指定ノードのみで作業させたいときに指定する重要な Synatax です。  | 
+| [stage](https://www.jenkins.io/doc/book/pipeline/#stage)  | [:page_facing_up:](templates/syntax/syntax-stage.Jenkinsfile) | templates/syntax/syntax-stage.Jenkinsfile | ビルド、テスト、デプロイ等のタスク単位で進捗状況を視覚化または表示する単位で纏める事ができます。当解説では主に視覚化を目的で Blue Ocean プラグインを利用しています。   | 
+| [parallel](https://www.jenkins.io/doc/book/pipeline/syntax/#parallel) | [:page_facing_up:](templates/syntax/syntax-parallel.Jenkinsfile) | templates/syntax/syntax-parallel.Jenkinsfile | 並列で各タスク処理するように指定する Syntax です。[Jenkinsfile](templates/syntax/syntax-parallel.Jenkinsfile) は並列で複数のリポジトリから git clone してビルド → テスト → デプロイするパターンのテンプレートです。   | 
+
+
+その他にも多数の Syntax があります、公式の [Pipeline Syntax](https://www.jenkins.io/doc/book/pipeline/syntax/) も参照してみてください。
 
 
 
@@ -81,7 +88,7 @@ master ノードで syntax の動作を確認するテンプレートです。
 sigle ノードのみで動作するテンプレートです。
 
 
-| Title | Node | Synatx | Jenkinsfile | Script Path | Description 
+| Title | Node | Syntax | Jenkinsfile | Script Path | Description 
 | ----- | ---- | ---- | :---------: |----------- |----------- 
 | hello world | master | [node](https://www.jenkins.io/doc/book/pipeline/#node), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](templates/single-node/master-hello-world.Jenkinsfile) | templates/single-node/hello-world.Jenkinsfile | master ノードのシェルスクリプトで echo します。 
 | hello world | linux-slave | " | [:page_facing_up:](templates/single-node/linux-slave-hello-world.Jenkinsfile) | template/single-node-only/linux-slave-hello-world.Jenkinsfile | linux-salve のシェルスクリプトで echo します。  [[作成手順補足]](documents/scm-linux-slave/)  
@@ -91,11 +98,15 @@ sigle ノードのみで動作するテンプレートです。
 複数ノードで動作するテンプレートです。 
 
 
-| Title | Nodes | Synatx | Jenkinsfile | Script Path | Description 
+| Title | Nodes | Syntax | Jenkinsfile | Script Path | Description 
 | ----- | ---- | ---- | :---------: |----------- |----------- 
 | multiple nodes hello world | master, linux-slave | [node](https://www.jenkins.io/doc/book/pipeline/#node), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](templates/multi-node/master-linux-node-hello-world.Jenkinsfile) | templates/multi-node/master-linux-node-hello-world.Jenkinsfile |  master → linux-slave の順で echo します。 
 | multiple nodes stage hello world | master, linux-slave | [node](https://www.jenkins.io/doc/book/pipeline/#node), [stage](https://www.jenkins.io/doc/book/pipeline/#stage), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](templates/multi-node/master-linux-node-hello-world-stage.Jenkinsfile) | templates/multi-node/master-linux-node-hello-world-stage.Jenkinsfile |  master → linux-slave の順でステージブロックで echo します。 [[ステージブロック補足]](documents/pipelines/stage-block/)
 | multiple nodes stage parallel hello world | master, linux-slave | [node](https://www.jenkins.io/doc/book/pipeline/#node), [stage](https://www.jenkins.io/doc/book/pipeline/#stage), [parallel](https://www.jenkins.io/doc/book/pipeline/syntax/#parallel), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](templates/multi-node/master-linux-node-stage-parallel.Jenkinsfile) | templates/multi-node/master-linux-node-stage-parallel.Jenkinsfile |  master, linux-slave の並列で echo します。[[parallel 補足]](documents/pipelines/parallel-syntax/)
+
+
+
+
 
 
 
