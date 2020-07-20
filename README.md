@@ -45,11 +45,14 @@ master のセットアップが終わったら 1.1.2 Jenkins slave 構築前に 
 
 ## 3. プラグイン導入
 
-| plugins | Description 
-| ----- | ---- 
-| Swarm plugin | 通常は master から slave に接続しますが、このプラグインは slave から master に接続できるようになります。  [[追加手順]](documents/plugins/swarm/)  
-| [Blue Ocean](https://www.jenkins.io/doc/book/blueocean/) | パイプラインの視覚化で利用します。  [[追加手順と利用方法]](documents/plugins/blue-ocean/)  
-| NodeJS | Jenkins から NodeJS を利用できるようになります。  [[追加手順と利用方法]](documents/plugins/nodejs/)  
+テンプレートの動作を確認する為に追加で必要なプラグインです。  
+（Required に :heavy_check_mark: が付いているものは必須です。）  
+
+| plugins | Required | Description 
+| ----- | :---: | ---- 
+| Swarm plugin | :heavy_check_mark: | 通常は master から slave に接続しますが、このプラグインは slave から master に接続できるようになります。  [[追加手順]](documents/plugins/swarm/)  
+| [Blue Ocean](https://www.jenkins.io/doc/book/blueocean/) | :heavy_check_mark: | パイプラインの視覚化で利用します。  [[追加手順と利用方法]](documents/plugins/blue-ocean/)  
+| NodeJS | - | Jenkins から NodeJS を利用できるようになります。  [[追加手順と利用方法]](documents/plugins/nodejs/)  
 
 
 ## 4. Templates
