@@ -67,7 +67,7 @@ master のセットアップが終わったら 1.1.2 Jenkins slave 構築前に 
 凡例：  
  * Jenkinsfile : :page_facing_up: アイコンのリンク先にパイプラインスクリプトを添付しています。  
  * Script Path : Pipeline script from SCM を選択して Script Path の内容を貼り付けて実行できます。  
- * Blue Ocean : Blue Ocean の実行結果です。  
+ * Results : :page_with_curl: に結果のスクリーンショットを添付しています。  
 
 ### 4.1 Syntax
 
@@ -75,38 +75,37 @@ master のセットアップが終わったら 1.1.2 Jenkins slave 構築前に 
 何れも master ノードで動作する Jenkinsfile です。  
 
 
-| Syntax | Jenkinsfile | Script Path | Description | BlueOcean
-| ----- | :---------: | ----------- | ----------- | -----------
-| [node](https://www.jenkins.io/doc/book/pipeline/#node) | [:page_facing_up:](templates/syntax/syntax-node.Jenkinsfile) | templates/syntax/syntax-node.Jenkinsfile | パイプラインの作業をノードブロック内に制限します、必須ではありませんが意図的に指定ノードのみで作業させたいときに指定する重要な Synatax です。  | 
-| [stage](https://www.jenkins.io/doc/book/pipeline/#stage)  | [:page_facing_up:](templates/syntax/syntax-stage.Jenkinsfile) | templates/syntax/syntax-stage.Jenkinsfile | ビルド、テスト、デプロイ等のタスク単位で進捗状況を視覚化または表示する単位で纏める事ができます。当解説では主に視覚化を目的で Blue Ocean プラグインを利用しています。   | 
-| [parallel](https://www.jenkins.io/doc/book/pipeline/syntax/#parallel) | [:page_facing_up:](templates/syntax/syntax-parallel.Jenkinsfile) | templates/syntax/syntax-parallel.Jenkinsfile | 並列で各タスク処理するように指定する Syntax です。[Jenkinsfile](templates/syntax/syntax-parallel.Jenkinsfile) は並列で複数のリポジトリから git clone してビルド → テスト → デプロイするパターンのテンプレートです。   | 
+| Syntax | Jenkinsfile | Script Path | Description | Results
+| ----- | :---------: | ----------- | ----------- | :---:
+| [node](https://www.jenkins.io/doc/book/pipeline/#node) | [:page_facing_up:](templates/syntax/syntax-node.Jenkinsfile) | templates/syntax/syntax-node.Jenkinsfile | パイプラインの作業をノードブロック内に制限します、必須ではありませんが意図的に指定ノードのみで作業させたいときに指定する重要な Synatax です。  | [:page_with_curl:](documents/syntax/node/node-01.png) 
+| [stage](https://www.jenkins.io/doc/book/pipeline/#stage)  | [:page_facing_up:](templates/syntax/syntax-stage.Jenkinsfile) | templates/syntax/syntax-stage.Jenkinsfile | ビルド、テスト、デプロイ等のタスク単位で進捗状況を視覚化または表示する単位で纏める事ができます。当解説では主に視覚化を目的で Blue Ocean プラグインを利用しています。   | [:page_with_curl:](documents/syntax/stage/stage-01.png) 
+| [parallel](https://www.jenkins.io/doc/book/pipeline/syntax/#parallel) | [:page_facing_up:](templates/syntax/syntax-parallel.Jenkinsfile) | templates/syntax/syntax-parallel.Jenkinsfile | 並列で各タスク処理するように指定する Syntax です。[Jenkinsfile](templates/syntax/syntax-parallel.Jenkinsfile) は並列で複数のリポジトリから git clone してビルド → テスト → デプロイするパターンのテンプレートです。   |  [:page_with_curl:](documents/syntax/parallel/parallel-01.png) 
 
 
-その他にも多数の Syntax があります、公式の [Pipeline Syntax](https://www.jenkins.io/doc/book/pipeline/syntax/) も参照してみてください。
+その他にも多数の Syntax があります、公式の [Pipeline Syntax](https://www.jenkins.io/doc/book/pipeline/syntax/) を参照ください。
 
 
 
-### 4.2 sigle node
+### 4.2 single node
 
-sigle ノードのみで動作するテンプレートです。
+単一ノードのみで動作するテンプレートです。
 
 
-| Title | Node | Syntax | Jenkinsfile | Script Path | Description 
-| ----- | ---- | ---- | :---------: |----------- |----------- 
-| hello world | master | [node](https://www.jenkins.io/doc/book/pipeline/#node), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](templates/single-node/master-hello-world.Jenkinsfile) | templates/single-node/hello-world.Jenkinsfile | master ノードのシェルスクリプトで echo します。 
-| hello world | linux-slave | " | [:page_facing_up:](templates/single-node/linux-slave-hello-world.Jenkinsfile) | template/single-node-only/linux-slave-hello-world.Jenkinsfile | linux-salve のシェルスクリプトで echo します。  [[作成手順補足]](documents/scm-linux-slave/)  
+| Title | Node | Syntax | Jenkinsfile | Script Path | Description | Results
+| ----- | ---- | ---- | :---------: |----------- |-----------  | :---:
+| hello world | master | [node](https://www.jenkins.io/doc/book/pipeline/#node), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](templates/single-node/master-hello-world.Jenkinsfile) | templates/single-node/hello-world.Jenkinsfile | master ノードのシェルスクリプトで echo します。 | [:page_with_curl:](documents/single-node/master-hello-world/master-hello-world-01.png), [:page_with_curl:](documents/single-node/master-hello-world/master-hello-world-02.png) 
+| hello world | linux-slave | " | [:page_facing_up:](templates/single-node/linux-slave-hello-world.Jenkinsfile) | template/single-node-only/linux-slave-hello-world.Jenkinsfile | linux-salve のシェルスクリプトで echo します。  [[作成手順補足]](documents/scm-linux-slave/)  | [:page_with_curl:](documents/single-node/linux-slave-hello-world/linux-slave-hello-world-01.png), [:page_with_curl:](documents/single-node/linux-slave-hello-world/linux-slave-hello-world-02.png) 
 
 ### 4.3 multi nodes
 
 複数ノードで動作するテンプレートです。 
 
 
-| Title | Nodes | Syntax | Jenkinsfile | Script Path | Description 
-| ----- | ---- | ---- | :---------: |----------- |----------- 
-| multiple nodes hello world | master, linux-slave | [node](https://www.jenkins.io/doc/book/pipeline/#node), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](templates/multi-node/master-linux-node-hello-world.Jenkinsfile) | templates/multi-node/master-linux-node-hello-world.Jenkinsfile |  master → linux-slave の順で echo します。 
-| multiple nodes stage hello world | master, linux-slave | [node](https://www.jenkins.io/doc/book/pipeline/#node), [stage](https://www.jenkins.io/doc/book/pipeline/#stage), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](templates/multi-node/master-linux-node-hello-world-stage.Jenkinsfile) | templates/multi-node/master-linux-node-hello-world-stage.Jenkinsfile |  master → linux-slave の順でステージブロックで echo します。 [[ステージブロック補足]](documents/pipelines/stage-block/)
-| multiple nodes stage parallel hello world | master, linux-slave | [node](https://www.jenkins.io/doc/book/pipeline/#node), [stage](https://www.jenkins.io/doc/book/pipeline/#stage), [parallel](https://www.jenkins.io/doc/book/pipeline/syntax/#parallel), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](templates/multi-node/master-linux-node-stage-parallel.Jenkinsfile) | templates/multi-node/master-linux-node-stage-parallel.Jenkinsfile |  master, linux-slave の並列で echo します。[[parallel 補足]](documents/pipelines/parallel-syntax/)
-
+| Title | Nodes | Syntax | Jenkinsfile | Script Path | Description | Results
+| ----- | ---- | ---- | :---------: |----------- |----------- | :---: 
+| multiple nodes hello world | master, linux-slave | [node](https://www.jenkins.io/doc/book/pipeline/#node), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](templates/multi-node/master-linux-node-hello-world.Jenkinsfile) | templates/multi-node/master-linux-node-hello-world.Jenkinsfile |  master → linux-slave の順で echo します。 | [:page_with_curl:](documents/multi-node/master-linux-node-hello-world/master-linux-node-hello-world-01.png), [:page_with_curl:](documents/multi-node/master-linux-node-hello-world/master-linux-node-hello-world-02.png)
+| multiple nodes stage hello world | master, linux-slave | [node](https://www.jenkins.io/doc/book/pipeline/#node), [stage](https://www.jenkins.io/doc/book/pipeline/#stage), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](templates/multi-node/master-linux-node-hello-world-stage.Jenkinsfile) | templates/multi-node/master-linux-node-hello-world-stage.Jenkinsfile |  master → linux-slave の順でステージブロックで echo します。 [[ステージブロック補足]](documents/pipelines/stage-block/) | [:page_facing_up:](documents/multi-node/master-linux-node-hello-world-stage/master-linux-node-hello-world-stage-01.png), [:page_facing_up:](documents/multi-node/master-linux-node-hello-world-stage/master-linux-node-hello-world-stage-02.png) 
+| multiple nodes stage parallel hello world | master, linux-slave | [node](https://www.jenkins.io/doc/book/pipeline/#node), [stage](https://www.jenkins.io/doc/book/pipeline/#stage), [parallel](https://www.jenkins.io/doc/book/pipeline/syntax/#parallel), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](templates/multi-node/master-linux-node-stage-parallel.Jenkinsfile) | templates/multi-node/master-linux-node-stage-parallel.Jenkinsfile |  master, linux-slave の並列で echo します。[[parallel 補足]](documents/pipelines/parallel-syntax/) | [:page_facing_up:](documents/multi-node/master-linux-node-stage-parallel/master-linux-node-stage-parallel-01.png), [:page_facing_up:](documents/multi-node/master-linux-node-stage-parallel/master-linux-node-stage-parallel-02.png)
 
 
 
