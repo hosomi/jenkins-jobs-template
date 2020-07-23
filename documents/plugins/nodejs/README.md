@@ -172,7 +172,7 @@ NodeJs のバージョンを echo する簡単なフリースタイルジョブ�
 
 　  
 
-[2.3.1 NodeJS LTS を追加[#2.3.1 NodeJS LTS を追加]の手順で ``Global npm packages to install`` の項目にグローバルインストールしたいパッケージ名を入力します。  
+[2.3.1 NodeJS LTS を追加(#2.3.1 NodeJS LTS を追加) の手順で ``Global npm packages to install`` の項目にグローバルインストールしたいパッケージ名を入力します。  
 
 
 ![NodeJS](nodejs-plugin-settings-04.png)    
