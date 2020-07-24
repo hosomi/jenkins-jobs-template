@@ -50,9 +50,9 @@ master のセットアップが終わったら 1.1.2 Jenkins slave 構築前に 
 
 | plugins | Required | Description 
 | ----- | :---: | ---- 
-| Swarm plugin | :heavy_check_mark: | 通常は master から slave に接続しますが、このプラグインは slave から master に接続できるようになります。  [[追加手順]](documents/plugins/swarm/)  
+| [Swarm](https://plugins.jenkins.io/swarm/) | :heavy_check_mark: | 通常は master から slave に接続しますが、このプラグインは slave から master に接続できるようになります。  [[追加手順]](documents/plugins/swarm/)  
 | [Blue Ocean](https://www.jenkins.io/doc/book/blueocean/) | :heavy_check_mark: | パイプラインの視覚化で利用します。  [[追加手順と利用方法]](documents/plugins/blue-ocean/)  
-| NodeJS | - | Jenkins から NodeJS を利用できるようになります。  [[追加手順と利用方法]](documents/plugins/nodejs/)  
+| [NodeJS](https://plugins.jenkins.io/nodejs/) | - | Jenkins から NodeJS を利用できるようになります。  [[追加手順と利用方法]](documents/plugins/nodejs/)  
 
 
 ## 4. Templates
@@ -108,7 +108,14 @@ master のセットアップが終わったら 1.1.2 Jenkins slave 構築前に 
 | multiple nodes stage parallel hello world | master, linux-slave | [node](https://www.jenkins.io/doc/book/pipeline/#node), [stage](https://www.jenkins.io/doc/book/pipeline/#stage), [parallel](https://www.jenkins.io/doc/book/pipeline/syntax/#parallel), [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script)  | [:page_facing_up:](templates/multi-node/master-linux-node-stage-parallel.Jenkinsfile) | templates/multi-node/master-linux-node-stage-parallel.Jenkinsfile |  master, linux-slave の並列で echo します。[[parallel 補足]](documents/pipelines/parallel-syntax/) | [:page_facing_up:](documents/multi-node/master-linux-node-stage-parallel/master-linux-node-stage-parallel-01.png), [:page_facing_up:](documents/multi-node/master-linux-node-stage-parallel/master-linux-node-stage-parallel-02.png)
 
 
+### 5. example
 
+より実用的なパイプラインジョブの example です。  
+追加でプラグインの導入が必要になってきますので、 [3. プラグイン導入](#3. プラグイン導入) の解説を参考に導入してください。  
+  
+| example | Nodes | Syntax | Jenkinsfile | Script Path | Description | Results
+| ----- | ---- | ---- | :---------: |----------- |----------- | :---: 
+| Angular build | linux-slave | [deleteDir](https://www.jenkins.io/doc/pipeline/steps/workflow-basic-steps/#deletedir-recursively-delete-the-current-directory-from-the-workspace), [checkout](https://www.jenkins.io/doc/pipeline/steps/workflow-scm-step/), nodejs, [dir](https://www.jenkins.io/doc/pipeline/steps/workflow-basic-steps/#dir-change-current-directory), [archiveArtifacts](https://www.jenkins.io/doc/pipeline/steps/core/#archiveartifacts-archive-the-artifacts), [fingerprint](https://www.jenkins.io/doc/pipeline/steps/core/#fingerprint-record-fingerprints-of-files-to-track-usage) |  [:page_facing_up:](templates/example/example-linux-slave-angular-build.Jenkinsfile) | templates/example/example-linux-slave-angular-build.Jenkinsfile | linux-slave で Angular10 のプロジェクトをビルドして成果物に保存して指紋もとります。 | - 
 
 
 
