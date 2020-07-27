@@ -63,7 +63,7 @@ master のセットアップが終わったら 1.1.2 Jenkins slave 構築前に 
 
 | Syntax | Jenkinsfile | Script Path | Description | Results
 | ----- | :---------: | ----------- | ----------- | :---:
-| [node](https://www.jenkins.io/doc/book/pipeline/#node) | [:page_facing_up:](templates/syntax/syntax-node.Jenkinsfile) | templates/syntax/syntax-node.Jenkinsfile | パイプラインの作業をノードブロック内に制限します、必須ではありませんが意図的に指定ノードのみで作業させたいときに指定する重要な Synatax です。  | [:page_with_curl:](documents/syntax/node/node-01.png) 
+| [node](https://www.jenkins.io/doc/book/pipeline/#node) | [:page_facing_up:](templates/syntax/syntax-node.Jenkinsfile) | templates/syntax/syntax-node.Jenkinsfile | パイプラインの作業をノードブロック内に制限します、必須ではありませんが意図的に指定ノードのみで作業させたいときに指定する重要な Syntax です。  | [:page_with_curl:](documents/syntax/node/node-01.png) 
 | [stage](https://www.jenkins.io/doc/book/pipeline/#stage)  | [:page_facing_up:](templates/syntax/syntax-stage.Jenkinsfile) | templates/syntax/syntax-stage.Jenkinsfile | ビルド、テスト、デプロイ等のタスク単位で進捗状況を視覚化または表示する単位で纏める事ができます。当解説では主に視覚化を目的で Blue Ocean プラグインを利用しています。   | [:page_with_curl:](documents/syntax/stage/stage-01.png) 
 | [parallel](https://www.jenkins.io/doc/book/pipeline/syntax/#parallel) | [:page_facing_up:](templates/syntax/syntax-parallel.Jenkinsfile) | templates/syntax/syntax-parallel.Jenkinsfile | 並列で各タスク処理するように指定する Syntax です。[Jenkinsfile](templates/syntax/syntax-parallel.Jenkinsfile) は並列で複数のリポジトリから git clone してビルド → テスト → デプロイするパターンのテンプレートです。   |  [:page_with_curl:](documents/syntax/parallel/parallel-01.png) 
 
